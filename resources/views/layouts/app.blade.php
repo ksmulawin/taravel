@@ -12,6 +12,21 @@
 
     <!-- Scripts -->
     <script src="{{ asset('public/js/app.js') }}" defer></script>
+    <script src="{{ asset('public/js/jquery.js') }}"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyBZKKLMyZ5e7uLc9o1P7k2xXDUv7Nrqllw&libraries=places&callback=autoCompleteLocation"
+        async ></script>
+    <script>
+    $(function(){
+        autoCompleteLocation();
+    });
+
+    function autoCompleteLocation() {
+      var input = document.getElementById('destination');
+      var autocomplete = new google.maps.places.Autocomplete(input);
+
+    }
+    </script>
+
 
     <!-- Fonts -->
     <!--link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -35,11 +50,11 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
 					 @guest
-					 
+
 					 @else
 						<li class="{{ (\Request::route()->getName()) == 'bucket' ? 'active' : '' }}"><a class="nav-link" href="{{ route('bucket') }}">Bucket List</a></li>
-						<li><a class="nav-link" href="#">Schedules</a></li>
-						<li><a class="nav-link" href="#">Trip</a></li>
+						<li  class="{{ (\Request::route()->getName()) == 'schedule' ? 'active' : '' }}"><a class="nav-link" href="{{ route('schedule') }}">Schedules</a></li>
+						<li class="{{ (\Request::route()->getName()) == 'trips' ? 'active' : '' }}"><a class="nav-link" href="{{ route('trips') }}">Trip</a></li>
 						<li><a class="nav-link" href="#">Gallery</a></li>
 					@endguest
                     </ul>

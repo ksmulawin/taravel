@@ -72,4 +72,25 @@
 	</div>
 </div>
 
+<script>
+  $(function(){
+    $('#destination').focus(function(){
+      $('.pac-container').css('z-index','99999');
+    });
+  });
+
+    $(function(){
+        autoCompleteLocation();
+    })
+  
+</script>
+
+    <style>
+    .modal{
+      z-index: 20;
+    }
+    .modal-backdrop{
+      z-index: 10;
+    }​
+    </style>
 @endsection

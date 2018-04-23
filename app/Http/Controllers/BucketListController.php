@@ -24,7 +24,7 @@ class BucketListController extends Controller
      */
     public function index()
     {
-		$bucket = Bucket::where('user_id',Auth::id())->paginate(10);
+		$bucket = $this->showBucketList();
         return view('menu.bucket')->with('bucket',$bucket);
     }
 
@@ -34,7 +34,11 @@ class BucketListController extends Controller
      * @return \Illuminate\Http\Response
      */
 	 
-
+	public function showBucketList()
+	{
+		$bucket = Bucket::where('user_id',Auth::id())->paginate(10);
+		return $bucket;
+	}
 	 
     public function createBucket(Request $request)
     {

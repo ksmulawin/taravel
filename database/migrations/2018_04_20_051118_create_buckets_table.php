@@ -14,8 +14,12 @@ class CreateBucketsTable extends Migration
     public function up()
     {
         Schema::create('buckets', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+          $table->increments('id');
+          $table->unsignedInteger('user_id');
+          $table->foreign('user_id')->references('id')->on('users');
+          $table->string('destination',255);
+          $table->text('details');
+          $table->timestamps();
         });
     }
 

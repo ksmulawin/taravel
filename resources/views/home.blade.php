@@ -7,7 +7,22 @@
             <div class="card">
                 <div class="card-header">Dashboard</div>
                 <div class="card-body">
-                   
+					<table class="table">
+						<thead>
+							<tr>
+								<th></th>
+								<th></th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+						</tbody>
+					</table>
                 </div>
             </div>
         </div>

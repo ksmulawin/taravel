@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBucketTable extends Migration
+class CreateTripsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateBucketTable extends Migration
      */
     public function up()
     {
-        Schema::create('bucket', function (Blueprint $table) {
+        Schema::create('trips', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
-			$table->string('destination',255);
-			$table->text('details');
+            $table->unsignedInteger('schedule_id');
+            $table->foreign('schedule_id')->references('id')->on('schedules');
+            $table->text('story');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateBucketTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bucket');
+        Schema::dropIfExists('trips');
     }
 }

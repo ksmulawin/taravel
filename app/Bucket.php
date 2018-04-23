@@ -9,4 +9,6 @@ class Bucket extends Model
     protected $fillable = [
         'user_id', 'destination','details'
     ];
+	
+
 }
