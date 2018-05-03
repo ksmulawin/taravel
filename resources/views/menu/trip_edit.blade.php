@@ -2,7 +2,7 @@
 
 @section('content')
 	<div class="col-md-6 offset-md-3">
-		<form method="post" action="{{ url('edit-story') }}">
+		<form method="post" action="{{ url('edit-story') }}" enctype="multipart/form-data">
 			{{ csrf_field() }}
 			<div class="card">
 			  <div class="card-header">
@@ -13,6 +13,10 @@
 					<div class="form-group">
 						<label for="destination">Create your story</label>
 						<textarea class="form-control" name="story" rows="10" required>{{ $trips->story }}</textarea>
+					</div>
+					<div class="form-group">
+						<label for="destination">Upload Photo</label>
+						<input type="file" class="form-control" name="file" ></textarea>
 					</div>
 			  </div>
 			  <div class="modal-footer">

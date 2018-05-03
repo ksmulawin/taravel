@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use Validator;
 use Auth;
+use Storage;
 
 use App\Trips;
 use App\Schedules;
@@ -77,6 +78,11 @@ class TripsController extends Controller
        {
           return back()->withErrors($validator);
        }
+
+      
+      //  if(!Storage::disk('public')->put(, $file_content)) {
+      //     return false;
+      // }
 
        Trips::where('id','=',$request->trip_id)->update([
                                                             'story' => $request->story

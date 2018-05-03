@@ -58,7 +58,6 @@
 						<li><a class="nav-link" href="#">Gallery</a></li>
 					@endguest
                     </ul>
-
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
@@ -68,20 +67,24 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <img src="{{asset('storage/app/avatar/'. Auth::user()->avatar)}}" class="img-fluid  rounded-circle" style="width:25px"/>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#avatarModal">
+                                        {{ __('Avatar') }}
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
                                 </div>
+
                             </li>
                         @endguest
                     </ul>
@@ -93,5 +96,36 @@
             @yield('content')
         </main>
     </div>
+
+
+    <!-- The Avatar Modal -->
+  <div class="modal fade" id="avatarModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form method="post" enctype="multipart/form-data" action="{{ url('changeAvatar') }}">
+          {{ csrf_field() }}
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Avatar</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+              <div class="form-group">
+                <label>Upload Image :</label>
+                <input type="file" name="avatar">
+              </div>
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

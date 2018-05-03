@@ -19,6 +19,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::post('changeAvatar','HomeController@changeAvatar');
+
+Route::get('avatar/{filename}','HomeController@showAvatar')->name('avatar');
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/bucket_list', 'BucketListController@index')->name('bucket'); // url name,controller@function, route name
 Route::get('/schedules', 'ScheduleController@index')->name('schedule','user_id');
